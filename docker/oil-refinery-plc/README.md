@@ -1,24 +1,24 @@
 Build with:
 
 ```
-docker build -t dainok/virtuaplant-oil-refinery-plc:2 .
+docker build -t dainok/virtuaplant-oil-refinery-plc:latest .
 ```
 
 Run with:
 
 ```
-docker run -t -p 80:6080 -p 502:5020 dainok/virtuaplant-oil-refinery-plc:2
+docker run -d -p 80:6080 -p 502:5020 dainok/virtuaplant-oil-refinery-plc:latest
 ```
 
 Debug with:
 
 ```
-docker run -it --entrypoint=/bin/bash -p 80:6080 -p 502:5020 dainok/virtuaplant-oil-refinery-plc:2
+docker run -it --entrypoint=/bin/bash -p 80:6080 -p 502:5020 dainok/virtuaplant-oil-refinery-plc:latest
 ```
 
 Publish with:
 
 ```
 docker login --username=dainok
-docker push dainok/virtuaplant-oil-refinery-plc:2
+docker push dainok/virtuaplant-oil-refinery-plc:latest
 ```
