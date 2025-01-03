@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 # IMPORTS #
+import os
 from gi.repository import GLib, Gtk, Gdk, GObject
 from pymodbus.client.sync import ModbusTcpClient as ModbusClient
 from pymodbus.exceptions import ConnectionException
@@ -10,31 +11,6 @@ import os
 import sys
 import time
 
-# Argument Parsing
-class MyParser(argparse.ArgumentParser):
-    def error(self, message):
-        sys.stderr.write('error: %s\n' % message)
-        self.print_help()
-        sys.exit(2)
-        
-# Create argparser object to add command line args and help option
-parser = MyParser(
-	description = 'This Python script runs the SCADA HMI to control the PLC',
-	epilog = '',
-	add_help = True)
-	
-# Add a "-i" argument to receive a filename
-parser.add_argument("-t", action = "store", dest="server_addr",
-					help = "Modbus server IP address to connect the HMI to")
-
-# Print help if no args are supplied
-if len(sys.argv)==1:
-	parser.print_help()
-	sys.exit(1)
-
-# Split and process arguments into "args"
-args = parser.parse_args()
-
 MODBUS_SLEEP=1
 
 class HMIWindow(Gtk.Window):
@@ -43,7 +19,7 @@ class HMIWindow(Gtk.Window):
     
     def initModbus(self):
         # Create modbus connection to specified address and port
-        self.modbusClient = ModbusClient(args.server_addr, port=5020)
+        self.modbusClient = ModbusClient(os.getenv("PLC"), port=502)
 
     # Default values for the HMI labels
     def resetLabels(self):

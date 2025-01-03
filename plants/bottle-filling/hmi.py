@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+import os
 from gi.repository import GLib, Gtk, GObject
 from pymodbus.client.sync import ModbusTcpClient as ModbusClient
 from pymodbus.exceptions import ConnectionException
@@ -10,7 +11,7 @@ class HMIWindow(Gtk.Window):
 
     def initModbus(self):
 
-        self.modbusClient = ModbusClient('localhost', port=5020)
+        self.modbusClient = ModbusClient(os.getenv("PLC"), port=502)
 
     def resetLabels(self):
         self.bottlePositionValue.set_markup("<span weight='bold' foreground='gray33'>N/A</span>")
