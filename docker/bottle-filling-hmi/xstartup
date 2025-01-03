@@ -1,0 +1,10 @@
+#!/bin/sh
+PLANT_DIR=/home/plant/virtuaplant/plants/bottle-filling
+PLANT_EXE=hmi.py
+xrdb $HOME/.Xresources
+xsetroot -solid black
+xrandr -s 640x480
+cd $PLANT_DIR
+while true; do
+  /usr/bin/python $PLANT_EXE -t 0.0.0.0
+done
