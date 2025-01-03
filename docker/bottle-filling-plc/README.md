@@ -15,3 +15,10 @@ Debug with:
 ```
 docker run -it --entrypoint=/bin/bash -p 80:6080 -p 502:5020 dainok/virtuaplant-bottle-filling-plc:5
 ```
+
+Publish with:
+
+```
+docker login --username=dainok
+docker push dainok/virtuaplant-bottle-filling-plc:2
+```

@@ -1,0 +1,10 @@
+#!/bin/sh
+PLANT_DIR=/home/plant/virtuaplant/plants/oil-refinery
+PLANT_EXE=oil_world.py
+xrdb $HOME/.Xresources
+xsetroot -solid black
+xrandr -s 640x480
+cd $PLANT_DIR
+while true; do
+  /usr/bin/python $PLANT_EXE -t 0.0.0.0
+done
