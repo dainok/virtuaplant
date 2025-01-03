@@ -1,4 +1,4 @@
-FROM dainok/virtuaplant:9
+FROM dainok/virtuaplant:12
 
 # Configure
 COPY --chown=plant --chmod=0755 xstartup /home/plant/.vnc/xstartup
