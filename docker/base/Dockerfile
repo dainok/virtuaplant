@@ -1,4 +1,4 @@
-FROM dainok/virtuaplant:17
+FROM ubuntu:14.04
 
 # Install dependencies
 RUN apt-get update

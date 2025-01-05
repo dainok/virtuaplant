@@ -15,7 +15,7 @@ docker push dainok/virtuaplant:latest
 # Build PLCs and HMIs
 for i in ${DIRS}; do
 	cd ${i}
-	sed -i "s/^FROM .*/FROM dainok\/virtuaplant:${RELEASE}/" Dockerfile
+	sed -i "s/^FROM dainok.*/FROM dainok\/virtuaplant:${RELEASE}/" Dockerfile
 	docker build --no-cache -t dainok/virtuaplant-${i}:latest -t dainok/virtuaplant-${i}:${RELEASE} .
 	docker push dainok/virtuaplant-${i}:${RELEASE}
 	docker push dainok/virtuaplant-${i}:latest
